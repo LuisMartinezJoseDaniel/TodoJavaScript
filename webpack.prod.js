@@ -65,8 +65,8 @@ module.exports = {
       filename: "[name].[fullhash].css", //Utilizar el css con nombre hash
       ignoreOrder: false,
     }),
-    new CopyPlugin({
-      patterns: [{ from: "src/assets/", to: "assets/" }], //Mover recursos estaticos
-    }),
+    // new CopyPlugin({
+    //   patterns: [{ from: "src/assets/", to: "assets/" }], //Mover recursos estaticos
+    // }),
   ],
 };
