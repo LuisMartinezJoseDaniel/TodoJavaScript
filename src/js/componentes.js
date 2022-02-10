@@ -35,6 +35,7 @@ txtInput.addEventListener('keyup', (event) => {
     todoList.nuevoTodo(nuevoTodo);
     crearTodoHtml(nuevoTodo);
     txtInput.value = '';
+    actualizarNumeroPendientes();
   }
 
 });
@@ -48,22 +49,25 @@ divTodoList.addEventListener('click', (event) => {
   if (nombreElemento.includes('input')) {//Click al check
     todoList.marcarCompletado(todoId);
     todoElemento.classList.toggle('completed');
-    numPendientes.innerText = todoList.todos.filter(element => !element.completado).length;
+    
   } else if (nombreElemento.includes('button')) { //Click button
     todoList.eliminarTodo(todoId);
     divTodoList.removeChild(todoElemento);
   }
+  actualizarNumeroPendientes();
   
 });
 
 btnBorrar.addEventListener('click', () => {
   todoList.eliminarCompletados();
+  
   for (let i = divTodoList.children.length - 1; i >= 0; i--) {
     const elemento = divTodoList.children[i];
     if (elemento.classList.contains('completed')) {
       divTodoList.removeChild(elemento);
     }
   }
+  actualizarNumeroPendientes();
 });
 
 ulFiltros.addEventListener('click', (event) => {
@@ -89,3 +93,7 @@ ulFiltros.addEventListener('click', (event) => {
     }
   }
 });
+
+export const actualizarNumeroPendientes = () => {
+  numPendientes.innerText = todoList.todos.filter(element => !element.completado).length;
+}

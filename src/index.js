@@ -1,7 +1,7 @@
 import './styles.css';
 
 import { Todo, TodoList} from './classes'; //Si no se esepecifica el import, se toma el index.js
-import { crearTodoHtml, numPendientes } from './js/componentes';
+import { actualizarNumeroPendientes, crearTodoHtml, numPendientes } from './js/componentes';
 
 export const todoList = new TodoList();
 //Recrear los todos del LocalStorage
@@ -11,3 +11,4 @@ export const todoList = new TodoList();
 //Segunda forma, solo funciona con un argumento
 todoList.todos.forEach(crearTodoHtml);
 
+actualizarNumeroPendientes();
